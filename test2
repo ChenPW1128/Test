@@ -1,0 +1,8 @@
+select
+    count(distinct user_id) as cnt
+from (
+         select user_id,
+                from_unixtime(event_timestamp) as ts
+         from event_log
+     )a
+where ts like '2020-09%';
