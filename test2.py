@@ -21,10 +21,10 @@ if __name__ == '__main__':
             timeStamp = int(time.mktime(timeStruct))
             localTime = time.localtime(timeStamp)
             strTime = time.strftime("%Y-%m-%d %H:%M:%S",localTime)
-            if strTime.split(" ")[0] == date:
+            if strTime.split(" ")[0] == date:       # 日期为传入的日期，个数加1
                 num = num + 1
                 if data_list[8] == "200":
-                    count = count + 1
+                    count = count + 1              # 请求状态成功，个数加1
             else:
                 continue
 
