@@ -1,8 +1,16 @@
 select
-    count(distinct user_id) as cnt
+    count(user_id) as num
 from (
-         select user_id,
-                from_unixtime(event_timestamp) as ts
-         from event_log
-     )a
-where ts like '2020-09%';
+    select
+        user_id,
+        count(ts) as cnt
+    from (
+        select
+            user_id,
+            from_unixtime(event_timestamp) as ts
+        from event_log
+    )a
+    where ts like '2020-09%'
+    group by user_id
+)b
+where cnt >= 1000 and cnt < 2000;
